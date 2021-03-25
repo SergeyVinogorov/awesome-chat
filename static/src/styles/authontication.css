@@ -1,0 +1,105 @@
+.mf-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 340px;
+    height: 460px;
+    background: var(--mf-bg-white);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+}
+.mf-form--height {
+    height: auto;
+}
+.mf-form__title {
+    font-weight: var(--mf-weight);
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--mf-text-color);
+    margin-bottom: 57px;
+    margin-top: 40px;
+}
+.mf-form__field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 32px;
+    border: 0;
+    padding: 0;
+}
+.mf-form__input {
+    height: 13px;
+    border: 0;
+    border-bottom: 1px solid var(--mf-text-blue);
+    padding: 0px 0px 7px 0px;
+    cursor: text;
+    font-weight: var(--mf-weight);
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--mf-text-color);
+    transition: all 0.2s;
+    touch-action: manipulation;
+    background-color: var(--mf-bg-white);
+}
+.mf-form__input:focus {
+    outline: 0;
+}
+.mf-form__input:focus::placeholder {
+    opacity: 1;
+}
+.mf-form__input::placeholder {
+    opacity: 0;
+}
+
+.mf-form__input:placeholder-shown + .mf-form__label {
+    font-size: 13px;
+    line-height: 13px;
+    cursor: pointer;
+}
+.mf-form__input:not(:placeholder-shown) + .mf-form__label,
+.mf-form__input:focus + .mf-form__label {
+    top: -17px;
+    font-size: 9px;
+    line-height: 9px;
+}
+
+.mf-form__label {
+    position: absolute;
+    font-weight: var(--mf-weight);
+    color: var(--mf-grey);
+    transition: all 0.2s;
+    cursor: text;
+}
+
+.mf-form__footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.mf-button {
+    height: 37px;
+    background: var(--mf-text-blue);
+    border-radius: 8px;
+    font-weight: var(--mf-weight);
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: var(--mf-bg-white);
+    border: 0;
+    cursor: pointer;
+}
+.mf-page-link {
+    font-weight: var(--mf-weight);
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+    color: var(--mf-text-blue);
+    text-decoration: none;
+}
+.mf-page-link--top-indent {
+    margin-top: 14px;
+}

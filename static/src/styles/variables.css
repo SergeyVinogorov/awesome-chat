@@ -1,0 +1,11 @@
+:root {
+    --mf-text-color: #1e1e1e;
+    --mf-text-blue: #3369f3;
+    --mf-bg-white: #ffffff;
+    --mf-grey: #999999;
+    /**Fonts variables*/
+    --mf-weight: 500;
+    --mf-family: Inter, sans-serif;
+    /**Base indents*/
+    --mf-base-indent: 12px;
+}

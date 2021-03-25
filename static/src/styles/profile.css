@@ -1,0 +1,101 @@
+.mf-center-block--not-vertical {
+    align-items: initial;
+    max-width: 510px;
+    margin: 0 auto;
+}
+
+.mf-profile__link {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 64px;
+    background: #fbfbfb;
+    border-right: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mf-profile__link-icon {
+    transform: rotate(180deg);
+}
+.mf-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mf-profile-form__image {
+    width: 131px;
+    height: 131px;
+    background: #efefef;
+    border-radius: 50%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.mf-profile-form__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: var(--mf-text-color);
+    margin: 0;
+    margin-bottom: 100px;
+}
+.mf-profile-form__field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    padding-top: 18px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+}
+
+.mf-profile-form__field > .mf-form__error {
+    margin-top: 0px;
+    padding-top: 8px;
+    position: absolute;
+    top: 37px;
+    right: 0;
+}
+.mf-profile-form__field:last-of-type {
+    border: none;
+}
+.mf-profile-form__field-title {
+    font-weight: var(--mf-weight);
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--mf-text-color);
+    cursor: pointer;
+}
+.mf-profile-form__field-text {
+    outline: none;
+    border: 0;
+    padding-bottom: 5px;
+    text-align: end;
+}
+.mf-profile-form__field-text::placeholder {
+    font-weight: var(--mf-weight);
+    font-size: 13px;
+    line-height: 13px;
+    text-align: right;
+    color: var(--mf-grey);
+}
+.mf-profile-form__submit {
+    width: 280px;
+    height: 37px;
+    background: var(--mf-text-blue);
+    border: 0;
+    border-radius: 8px;
+    font-weight: var(--mf-weight);
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}

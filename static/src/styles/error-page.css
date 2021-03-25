@@ -1,0 +1,29 @@
+.mf-page-h1 {
+    font-weight: var(--mf-weight);
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--mf-text-color);
+    margin: 0px;
+}
+
+.mf-page-h2 {
+    font-weight: var(--mf-weight);
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--mf-text-color);
+}
+.mf-page-h2--indent {
+    margin-top: 20px;
+    margin-bottom: 69px;
+}
+.mf-page-link {
+    display: block;
+    font-weight: var(--mf-weight);
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+    color: var(--mf-text-blue);
+    text-decoration: none;
+}

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+		"target": "es5",
+		"module": "es2020",
+		"lib": [
+			"esnext",
+			"dom"
+		],
+		"outDir": "static/dist",
+		"rootDir": "./static/src",
+		"declaration": true,
+		"removeComments": false,
+		"stripInternal": true,
+		"alwaysStrict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+	}
+}
