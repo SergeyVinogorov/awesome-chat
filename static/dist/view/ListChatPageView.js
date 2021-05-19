@@ -1,5 +1,5 @@
 import Didact from '../core/didactClass.js';
-import { ListChatContainer } from '../components/ListChatContainer/index.js';
+import { ListChatContainer } from './components/ListChatContainer/index.js';
 export var ListChatPageView = function (ctrl) {
     var allChats = [
         {

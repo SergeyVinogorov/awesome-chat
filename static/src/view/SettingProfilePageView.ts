@@ -3,7 +3,7 @@ import {
     UserPageOptions,
 } from '../controllers/SentingProfilePageController';
 import Didact from '../core/didactClass';
-import { Fieldset } from '../components/Fieldset/index';
+import { Fieldset } from './components/Fieldset/index';
 
 export const SettingProfilePageView = <P extends UserPageOptions>(
     ctrl: SettingProfilePageController<P>

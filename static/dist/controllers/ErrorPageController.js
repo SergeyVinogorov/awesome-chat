@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import { BaseComponent } from '../components/BaseComponent.js';
+import { BaseComponent } from '../view/components/BaseComponent.js';
 import { NotFoundPageView } from '../view/NotFoundRageView.js';
 import { ServerErrorPageView } from '../view/ServerErrorPaveView.js';
 var ErrorPageController = /** @class */ (function (_super) {

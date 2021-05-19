@@ -203,7 +203,7 @@ class Component {
 
     setState(partialState: any | {}) {
         this.state = Object.assign({}, this.state, partialState);
-        updateInstance(this.__internalInstance);
+        // updateInstance(this.__internalInstance);
     }
     forceUpdate() {
         updateInstance(this.__internalInstance);

@@ -1,1 +1,1 @@
-{"version":3,"file":"ServiceDecorator.js","sourceRoot":"","sources":["../../src/core/ServiceDecorator.ts"],"names":[],"mappings":"AAEA;;;GAGG;AACH,MAAM,CAAC,IAAM,OAAO,GAAG;IACrB,OAAO,UAAC,OAAkB;QACxB,wGAAwG;IAC1G,CAAC,CAAC;AACJ,CAAC,CAAC"}
+{"version":3,"file":"ServiceDecorator.js","sourceRoot":"","sources":["../../src/core/ServiceDecorator.ts"],"names":[],"mappings":"AAEA;;;GAGG;AACH,MAAM,CAAC,IAAM,OAAO,GAAG;IACrB,OAAO,UAAC,OAAkB;QACxB,wGAAwG;QACxG,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;IAEvB,CAAC,CAAC;AACJ,CAAC,CAAC"}

@@ -5,7 +5,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-import 'reflect-metadata';
+import "reflect-metadata";
 /**
  * The Injector stores services and resolves requested instances.
  */

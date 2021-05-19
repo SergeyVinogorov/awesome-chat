@@ -12,12 +12,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { PageFormValidatorService } from '../services/PageFormValidatorService.js';
-import { BaseComponent } from '../components/BaseComponent.js';
+import { BaseComponent } from '../view/components/BaseComponent.js';
 import { ListChatPageView } from '../view/ListChatPageView.js';
 var ListChatPageController = /** @class */ (function (_super) {
     __extends(ListChatPageController, _super);
-    function ListChatPageController() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function ListChatPageController(props) {
+        var _this = _super.call(this, props) || this;
         _this.view = ListChatPageView;
         _this.validatorService = new PageFormValidatorService();
         return _this;

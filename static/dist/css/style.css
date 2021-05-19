@@ -3,6 +3,10 @@
     --mf-text-blue: #3369f3;
     --mf-bg-white: #ffffff;
     --mf-grey: #999999;
+    --mf-info: #2196f3;
+    --mf-warning: #ff9800;
+    --mf-success: #4caf50;
+    --mf-error: #f44336;
     /**Fonts variables*/
     --mf-weight: 500;
     --mf-family: Inter, sans-serif;
@@ -624,4 +628,36 @@
     font-size: var(--mf-base-indent);
     line-height: var(--mf-base-indent);
     color: var(--mf-grey);
+}
+.mf-error-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.error-toast__close {
+  width: 12px;
+  height: 12px;
+  background-image: url('../assets/images/svg/close_error.svg');
+  background-color: #cccccc;
+  display: block;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+.mf-success {
+  background: var(--mf-success);
+}
+.mf-info {
+  background: var(--mf-info);
+}
+.mf-warning {
+  background: var(--mf-warning);
+}
+.mf-error {
+  background: var(--mf-error);
 }

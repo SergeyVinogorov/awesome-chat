@@ -1,14 +1,15 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 export interface UserPageOptions {
     param1?: number;
     param2?: string;
 }
 export declare class ListChatPageController<P extends UserPageOptions> extends BaseComponent<P> {
-    readonly view: <P_1 extends UserPageOptions>(ctrl: ListChatPageController<P_1>) => {
+    view: <P_1 extends UserPageOptions>(ctrl: ListChatPageController<P_1>) => {
         type: string;
         props: any;
     };
     validatorService: PageFormValidatorService;
+    constructor(props: any);
     handleSearch(value: string): void;
 }

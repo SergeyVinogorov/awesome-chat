@@ -1,5 +1,42 @@
-var LoginDto = /** @class */ (function () {
-    function LoginDto() {
+var USER_INFO = 'USER_INFO';
+var USER_OUT = 'USER_OUT';
+var initialState = {
+    userInfo: {
+        id: null,
+        first_name: null,
+        second_name: null,
+        display_name: null,
+        login: null,
+        email: null,
+        phone: null,
+        avatar: null
+    }
+};
+export function handleUserInfo(user) {
+    return {
+        type: USER_INFO,
+        user: user
+    };
+}
+export function handleUserLogout() {
+    return {
+        type: USER_OUT,
+        user: initialState
+    };
+}
+export default function userReducer(state, action) {
+    if (state === void 0) { state = initialState; }
+    switch (action.type) {
+        case USER_INFO:
+            return Object.assign({}, action.user);
+        case USER_OUT:
+            return Object.assign({}, action.user);
+        default:
+            return state;
+    }
+}
+var UserDto = /** @class */ (function () {
+    function UserDto() {
         this.userState = {
             value: '',
             isValid: true,
@@ -13,7 +50,7 @@ var LoginDto = /** @class */ (function () {
         this.phone = null;
         this.avatar = null;
     }
-    LoginDto.prototype.getState = function () {
+    UserDto.prototype.getState = function () {
         var result = {
             id: this.id,
             first_name: this.first_name,
@@ -26,7 +63,7 @@ var LoginDto = /** @class */ (function () {
         };
         return result;
     };
-    return LoginDto;
+    return UserDto;
 }());
-export { LoginDto };
+export { UserDto };
 //# sourceMappingURL=UserDto.js.map

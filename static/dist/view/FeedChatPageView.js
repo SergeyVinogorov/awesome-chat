@@ -1,6 +1,6 @@
 import Didact from '../core/didactClass.js';
-import { ListChatContainer } from '../components/ListChatContainer/index.js';
-import { Button } from '../components/button/index.js';
+import { ListChatContainer } from './components/ListChatContainer/index.js';
+import { Button } from './components/button/index.js';
 export var FeedChatPageView = function (ctrl) {
     var allChats = [
         {

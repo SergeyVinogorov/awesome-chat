@@ -1,5 +1,5 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 export interface UserPageOptions {
     param1?: number;
     param2?: string;

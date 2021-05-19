@@ -1,11 +1,13 @@
 export type ErrorType = {
   type: ErrorTypeOfType,
   message: string,
-  isExist: boolean
+  isError: boolean,
+  show: boolean
 }
 
 export enum ErrorTypeOfType {
-  warning = 'warning',
-  info = 'info',
-  error = 'error'
+  success = 'mf-success',
+  info = 'mf-info',
+  warning = 'mf-warning',
+  error = 'mf-error'
 }

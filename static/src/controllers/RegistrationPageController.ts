@@ -1,100 +1,164 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
+import { AuthServise } from '../services/AuthServise';
 
+import { BaseComponent } from '../view/components/BaseComponent';
 import { RegistrationPageView } from '../view/RegistrationPageView';
 
-import { RegistrationDto } from '../models/RegistrationDto';
+import { getState, dispatch } from "../models/models";
+// import { handleSignUpAction } from '../models/RegistrationDto/actions';
+import { handleErrorAction} from "../models/AppDto/actions";
 
 import { InputStateType, InputValue } from "../types/formTypes";
+import { InitialRegistrationType } from "../models/RegistrationDto/type";
+
+import { isEqual } from "../utils/isEqual";
 export interface UserPageOptions {
     param1?: number;
     param2?: string;
 }
 
+type validateStore = {
+  firstName?: InputStateType,
+  lastName?: InputStateType,
+  login?: InputStateType,
+  mail?: InputStateType,
+  phone?: InputStateType
+  password?: InputStateType,
+  passwordRepeat?: InputStateType
+}
 export class RegistrationPageController<
     P extends UserPageOptions
 > extends BaseComponent<P> {
-
     public readonly view = RegistrationPageView;
-
-    public registrationState: RegistrationDto = new RegistrationDto()
+    public auth = new AuthServise()
+    public store = getState()
 
     public validatorService: PageFormValidatorService = new PageFormValidatorService();
 
-    get getState() {
-        return this.registrationState.getState()
+    activate(){
+      this.setState({
+        firstName: {
+          value: '',
+          isValid: true,
+        },
+        lastName: {
+          value: '',
+          isValid: true,
+        },
+        login: {
+          value: '',
+          isValid: true,
+        },
+        mail: {
+          value: '',
+          isValid: true,
+        },
+        phone: {
+          value: '',
+          isValid: true,
+        },
+        password: {
+          value: '',
+          isValid: true,
+        },
+        passwordRepeat: {
+          value: '',
+          isValid: true,
+        },
+      })
     }
 
-    _handelValidate(event: InputValue, type: string, name: string) {
+    handlerCloseToast = () => {
+     let currTest = Object.assign({},this.store)
+     currTest.appReducer.errorApp.show = false
+     dispatch(handleErrorAction(currTest.appReducer.errorApp))
+     this.store = getState()
+    }
+
+    _handelValidate(event: InputValue, type: string, name: keyof InitialRegistrationType) {
         let resultValidate: InputStateType = this.validatorService.validateValue(
             event.value,
             type
         );
-
-        switch (name) {
-          case 'firstName':
-              this.registrationState.firstName = resultValidate;
-              break;
-          case 'lastName':
-              this.registrationState.lastName = resultValidate;
-              break;
-          case 'login':
-              this.registrationState.login = resultValidate;
-              break;
-          case 'mail':
-              this.registrationState.mail = resultValidate;
-              break;
-          case 'phone':
-              this.registrationState.phone = resultValidate;
-              break;
-          case 'password':
-              this.registrationState.password = resultValidate;
-              break;
-          case 'passwordRepeat':
-              this.registrationState.passwordRepeat = resultValidate;
-              break;
-          default:
-              break;
-        }
-        return resultValidate;
+        const result: validateStore = {}
+        result[name] = resultValidate
+        const newState = Object.assign({}, this.state, result)
+        this.setState(newState)
+        this.forceUpdate()
+        // const localState: InitialRegistrationType = Object.assign({}, this.store.signUpReducer, result)
+        // dispatch(handleSignUpAction(localState))
+        // this.store = getState()
     }
 
-    handleOnInput(event: InputValue, type: string, name: string) {
+    handleOnInput(event: InputValue, type: string, name: keyof InitialRegistrationType) {
         this._handelValidate(event, type, name);
-        this.forceUpdate();
     }
-    handleOnBlur(event: InputValue, type: string, name: string) {
+    handleOnBlur(event: InputValue, type: string, name: keyof InitialRegistrationType) {
         this._handelValidate(event, type, name);
-        this.forceUpdate();
     }
+
+    handelCheckPassword(password: string, passwordRepeat: string){
+      return isEqual(password, passwordRepeat)
+    }
+
     handleFormData(e: Event) {
-        e.preventDefault();
-        this._handelValidate(this.registrationState.firstName, 'text', 'firstName')
-        this._handelValidate(this.registrationState.lastName, 'text', 'lastName')
-        this._handelValidate(this.registrationState.login, 'email', 'login')
-        this._handelValidate(this.registrationState.mail, 'email', 'mail')
-        this._handelValidate(this.registrationState.phone, 'tel', 'phone')
-        this._handelValidate(this.registrationState.password, 'password', 'password')
-
-        if (
-            this.registrationState.firstName.isValid &&
-            this.registrationState.lastName.isValid &&
-            this.registrationState.login.isValid &&
-            this.registrationState.mail.isValid &&
-            this.registrationState.phone.isValid &&
-            this.registrationState.password.isValid
-        ) {
-            const formData = new FormData();
-            formData.append('firstName', this.registrationState.firstName.value);
-            formData.append('lastName', this.registrationState.lastName.value);
-            formData.append('login', this.registrationState.login.value);
-            formData.append('mail', this.registrationState.mail.value);
-            formData.append('phone', this.registrationState.phone.value);
-            console.log('firstName: ', formData.get('firstName'));
-            console.log('lastName: ', formData.get('lastName'));
-            console.log('login: ', formData.get('login'));
-            console.log('phone: ', formData.get('phone'));
-        }
-        this.forceUpdate();
+      e.preventDefault();
+      // const methodStore = this.store.signUpReducer
+      const methodStore = this.state;
+      const firstName = this.validatorService.validateValue(
+          methodStore.firstName.value,
+          'text'
+      );
+      const lastName = this.validatorService.validateValue(
+          methodStore.lastName.value,
+          'text'
+      );
+      const login = this.validatorService.validateValue(
+          methodStore.login.value,
+          'email'
+      );
+      const mail = this.validatorService.validateValue(
+          methodStore.mail.value,
+          'email'
+      );
+      const phone = this.validatorService.validateValue(
+          methodStore.phone.value,
+          'tel'
+      );
+      const password = this.validatorService.validateValue(
+          methodStore.password.value,
+          'password'
+      );
+      const passwordRepeat = this.validatorService.validateValue(
+          methodStore.passwordRepeat.value,
+          'password'
+      );
+      if (
+          firstName.isValid &&
+          lastName.isValid &&
+          login.isValid &&
+          mail.isValid &&
+          phone.isValid &&
+          password.isValid &&
+          passwordRepeat.isValid &&
+          this.handelCheckPassword(password.value, passwordRepeat.value)
+      ) {
+          let params = {
+            first_name: firstName.value,
+            second_name: lastName.value,
+            login: login.value,
+            email: mail.value,
+            password: password.value,
+            phone: phone.value,
+          }
+          this.auth.signUp(params)
+      }
     }
 }
+//{"id":13540}
+// email: "VinogorichS@yandex.ru"
+// first_name: "Сергей"
+// login: "VinogorichS@yandex.ru"
+// password: "testuser"
+// phone: "89676430819"
+// second_name: "VINOGOROV"

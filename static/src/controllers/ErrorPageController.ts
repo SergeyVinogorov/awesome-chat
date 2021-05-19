@@ -1,4 +1,4 @@
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 import { NotFoundPageView } from '../view/NotFoundRageView';
 import { ServerErrorPageView } from '../view/ServerErrorPaveView';
 

@@ -3,7 +3,7 @@ import {
     ListChatPageController,
     UserPageOptions,
 } from '../controllers/ListChatController';
-import { ListChatContainer } from '../components/ListChatContainer/index';
+import { ListChatContainer } from './components/ListChatContainer/index';
 
 export const ListChatPageView = <P extends UserPageOptions>(
     ctrl: ListChatPageController<P>

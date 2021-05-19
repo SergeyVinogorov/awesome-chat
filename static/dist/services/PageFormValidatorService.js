@@ -8,7 +8,7 @@ var PageFormValidatorService = /** @class */ (function () {
             case 'tel':
                 var max = new MaxInterface(11);
                 var min = new MinInterface(4);
-                var pattern = new PatternInterface(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
+                var pattern = new PatternInterface(/^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/);
                 isValid = max.isValid(value);
                 isValid = min.isValid(value);
                 isValid = pattern.isValid(value);

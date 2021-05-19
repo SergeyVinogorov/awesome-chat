@@ -1,7 +1,8 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
-import { RegistrationDto } from '../models/RegistrationDto';
-import { InputStateType, InputValue } from "../types/formTypes";
+import { AuthServise } from '../services/AuthServise';
+import { BaseComponent } from '../view/components/BaseComponent';
+import { InputValue } from "../types/formTypes";
+import { InitialRegistrationType } from "../models/RegistrationDto/type";
 export interface UserPageOptions {
     param1?: number;
     param2?: string;
@@ -11,18 +12,14 @@ export declare class RegistrationPageController<P extends UserPageOptions> exten
         type: string;
         props: any;
     };
-    registrationState: RegistrationDto;
+    auth: AuthServise;
+    store: import("../models/models").stateType;
     validatorService: PageFormValidatorService;
-    get getState(): {
-        firstName: import("../types/loginTypes").InputStateType;
-        lastName: import("../types/loginTypes").InputStateType;
-        login: import("../types/loginTypes").InputStateType;
-        mail: import("../types/loginTypes").InputStateType;
-        phone: import("../types/loginTypes").InputStateType;
-        password: import("../types/loginTypes").InputStateType;
-    };
-    _handelValidate(event: InputValue, type: string, name: string): InputStateType;
-    handleOnInput(event: InputValue, type: string, name: string): void;
-    handleOnBlur(event: InputValue, type: string, name: string): void;
+    activate(): void;
+    handlerCloseToast: () => void;
+    _handelValidate(event: InputValue, type: string, name: keyof InitialRegistrationType): void;
+    handleOnInput(event: InputValue, type: string, name: keyof InitialRegistrationType): void;
+    handleOnBlur(event: InputValue, type: string, name: keyof InitialRegistrationType): void;
+    handelCheckPassword(password: string, passwordRepeat: string): boolean;
     handleFormData(e: Event): void;
 }

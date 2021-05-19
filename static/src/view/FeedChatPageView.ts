@@ -3,8 +3,8 @@ import {
     FeedChatPageController,
     UserPageOptions,
 } from '../controllers/FeedChatController';
-import { ListChatContainer } from '../components/ListChatContainer/index';
-import { Button } from '../components/button/index';
+import { ListChatContainer } from './components/ListChatContainer/index';
+import { Button } from './components/button/index';
 
 export const FeedChatPageView = <P extends UserPageOptions>(
     ctrl: FeedChatPageController<P>

@@ -1,4 +1,4 @@
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 export interface UserPageOptions {
     notFound?: boolean;
 }

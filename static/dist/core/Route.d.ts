@@ -2,9 +2,7 @@ import Didact from "./didactClass";
 export default class Route {
     private _pathname;
     private _blockClass;
-    private _block;
-    private _props;
-    constructor(pathname: string, view: typeof Didact.Component, props: any);
+    constructor(pathname: string, view: typeof Didact.Component);
     navigate(pathname: string): void;
     leave(): void;
     match(pathname: string): boolean;

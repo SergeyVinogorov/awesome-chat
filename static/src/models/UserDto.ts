@@ -1,6 +1,63 @@
 import { InputStateType } from "../types/loginTypes";
 
-export class LoginDto {
+export type InitialTypeUser = {
+  userInfo: {
+    id: number | null,
+    first_name: string | null,
+    second_name: string | null,
+    display_name: string | null,
+    login: string | null,
+    email: string | null,
+    phone: string | null,
+    avatar: string | null,
+  }
+}
+interface PassedType {
+  type: string,
+  user?: InitialTypeUser,
+}
+
+const USER_INFO = 'USER_INFO';
+const USER_OUT = 'USER_OUT';
+
+const initialState: InitialTypeUser = {
+  userInfo: {
+    id: null,
+    first_name: null,
+    second_name: null,
+    display_name: null,
+    login: null,
+    email: null,
+    phone: null,
+    avatar: null
+  }
+}
+
+export function handleUserInfo(user: InitialTypeUser) {
+  return {
+    type: USER_INFO,
+    user
+  }
+}
+export function handleUserLogout() {
+  return {
+    type: USER_OUT,
+    user: initialState
+  }
+}
+
+export default function userReducer(state = initialState, action: PassedType) {
+  switch (action.type) {
+    case USER_INFO:
+      return Object.assign({}, action.user)
+    case USER_OUT:
+      return Object.assign({}, action.user)
+    default:
+      return state
+  }
+}
+
+export class UserDto {
 
   public userState: InputStateType = {
         value: '',

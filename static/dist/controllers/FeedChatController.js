@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { PageFormValidatorService } from '../services/PageFormValidatorService.js';
-import { BaseComponent } from '../components/BaseComponent.js';
+import { BaseComponent } from '../view/components/BaseComponent.js';
 import { FeedChatPageView } from '../view/FeedChatPageView.js';
 var FeedChatPageController = /** @class */ (function (_super) {
     __extends(FeedChatPageController, _super);

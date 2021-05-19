@@ -159,7 +159,7 @@ var Component = /** @class */ (function () {
     };
     Component.prototype.setState = function (partialState) {
         this.state = Object.assign({}, this.state, partialState);
-        updateInstance(this.__internalInstance);
+        // updateInstance(this.__internalInstance);
     };
     Component.prototype.forceUpdate = function () {
         updateInstance(this.__internalInstance);

@@ -1,3 +1,7 @@
+export declare type loginType = {
+    login: string;
+    password: string;
+};
 export declare type InputStateType = {
     value: string;
     isValid: boolean;

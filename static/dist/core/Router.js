@@ -10,7 +10,7 @@ var Router = /** @class */ (function () {
         Router.__instance = this;
     }
     Router.prototype.use = function (pathname, block) {
-        var route = new Route(pathname, block, { rootQuery: this._rootQuery });
+        var route = new Route(pathname, block);
         this.routes.push(route);
         return this;
     };
@@ -19,7 +19,7 @@ var Router = /** @class */ (function () {
         window.onpopstate = (function (event) {
             _this._onRoute(event.currentTarget.location.pathname);
         }).bind(this);
-        // this._onRoute(window.location.pathname);
+        this._onRoute(window.location.pathname);
     };
     Router.prototype._onRoute = function (pathname) {
         var route = this.getRoute(pathname);
@@ -29,12 +29,12 @@ var Router = /** @class */ (function () {
         if (this._currentRoute) {
             this._currentRoute.leave();
         }
-        route.render(route, pathname);
+        this._currentRoute = route;
+        route.render();
     };
-    Router.prototype.go = function (pathname) {
-        this.history.pushState({}, "", pathname);
+    Router.prototype.go = function (pathname, title) {
+        this.history.pushState({}, title, pathname);
         this._onRoute(pathname);
-        console.log(this._currentRoute);
     };
     Router.prototype.getRoute = function (pathname) {
         return this.routes.find(function (route) { return route.match(pathname); });

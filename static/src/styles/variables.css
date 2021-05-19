@@ -3,6 +3,10 @@
     --mf-text-blue: #3369f3;
     --mf-bg-white: #ffffff;
     --mf-grey: #999999;
+    --mf-info: #2196f3;
+    --mf-warning: #ff9800;
+    --mf-success: #4caf50;
+    --mf-error: #f44336;
     /**Fonts variables*/
     --mf-weight: 500;
     --mf-family: Inter, sans-serif;

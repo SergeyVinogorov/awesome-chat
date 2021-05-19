@@ -3,7 +3,7 @@ import {
     UserPageOptions,
 } from '../controllers/RegistrationPageController';
 import Didact from '../core/didactClass';
-import { Fieldset } from '../components/Fieldset/index';
+import { Fieldset } from './components/Fieldset/index';
 
 export const RegistrationPageView = <P extends UserPageOptions>(
     ctrl: RegistrationPageController<P>
@@ -17,7 +17,18 @@ export const RegistrationPageView = <P extends UserPageOptions>(
         onsubmit: (e: Event) => ctrl.handleFormData(e),
     };
 
-    return Didact.createElement('form', attriubutes, [
+    const errorView = () => {
+      let isShow: boolean = ctrl.store?.appReducer.errorApp.show
+      let message: string = ctrl.store?.appReducer.errorApp.message
+      let type: string = ctrl.store?.appReducer.errorApp.type
+      return isShow ? ctrl.handelerError(message, ctrl.handlerCloseToast, type) : ''
+    }
+    const messagePasswordRepeat = () => {
+     return ctrl.handelCheckPassword(ctrl.state.password.value, ctrl.state.passwordRepeat.value)
+    }
+
+    return Didact.createElement('div', {className:"mf-page mf-center-block"}, [
+      Didact.createElement('form', attriubutes, [
         Didact.createElement('div', { className: 'mf-form__body' }, [
             Didact.createElement(
                 'h2',
@@ -33,7 +44,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'name',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.firstName,
+                state: ctrl.state.firstName,
             }),
             new Fieldset({
                 id: 'surnameInput',
@@ -44,7 +55,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'secondName',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.lastName,
+                state: ctrl.state.lastName,
             }),
             new Fieldset({
                 id: 'loginInput',
@@ -55,7 +66,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'login',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.login,
+                state: ctrl.state.login,
             }),
             new Fieldset({
                 id: 'mailInput',
@@ -66,7 +77,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'mail',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.mail,
+                state: ctrl.state.mail,
             }),
             new Fieldset({
                 id: 'phoneInput',
@@ -77,7 +88,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'phone',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.phone,
+                state: ctrl.state.phone,
             }),
             new Fieldset({
                 id: 'loginPassword',
@@ -88,19 +99,20 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 typeStore: 'password',
                 className: 'mf-form__field',
                 control: ctrl,
-                state: ctrl.getState.password,
+                state: ctrl.state.password,
             }),
-            // new Fieldset({
-            //     id: 'loginPassword',
-            //     nameLabel: 'Пароль (ещё раз)',
-            //     message: 'Пароли не совпадают',
-            //     type: 'password',
-            //     name: 'passwordRepeat',
-            //     typeStore: 'password',
-            //     className: 'mf-form__field',
-            //     control: ctrl,
-            //     state: ctrl.getState.password,
-            // }),
+            new Fieldset({
+                id: 'loginPassword',
+                nameLabel: 'Пароль (ещё раз)',
+                message: 'Пароли не совпадают',
+                type: 'password',
+                name: 'passwordRepeat',
+                typeStore: 'password',
+                className: 'mf-form__field',
+                control: ctrl,
+                state: ctrl.state.passwordRepeat,
+                isRepeat: messagePasswordRepeat()
+            }),
         ]),
         Didact.createElement('div', { className: 'mf-form__footer' }, [
             Didact.createElement(
@@ -121,5 +133,7 @@ export const RegistrationPageView = <P extends UserPageOptions>(
                 'Войти'
             ),
         ]),
-    ]);
+    ]),
+      errorView()
+    ])
 };

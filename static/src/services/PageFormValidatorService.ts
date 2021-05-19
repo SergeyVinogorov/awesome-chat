@@ -13,9 +13,7 @@ export class PageFormValidatorService {
             case 'tel':
                 const max = new MaxInterface(11);
                 const min = new MinInterface(4);
-                const pattern = new PatternInterface(
-                    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-                );
+                const pattern = new PatternInterface(/^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/);
                 isValid = max.isValid(value);
                 isValid = min.isValid(value);
                 isValid = pattern.isValid(value);

@@ -1,24 +1,27 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
-import { LoginDto } from '../models/LoginDto';
+import { AuthServise } from '../services/AuthServise';
+import { BaseComponent } from '../view/components/BaseComponent';
+import { stateType } from "../models/models";
 import { InputValue } from "../types/formTypes";
+import { InitialLoginType } from "../models/LoginDto/type";
 export interface UserPageOptions {
     param1?: number;
     param2?: string;
 }
 export declare class LoginPageController<P extends UserPageOptions> extends BaseComponent<P> {
-    readonly view: <P_1 extends UserPageOptions>(ctrl: LoginPageController<P_1>) => {
+    view: <P_1 extends UserPageOptions>(ctrl: LoginPageController<P_1>) => {
         type: string;
         props: any;
     };
-    loginState: LoginDto;
+    auth: AuthServise;
+    store: stateType;
     validatorService: PageFormValidatorService;
-    get getState(): {
-        login: import("../types/loginTypes").InputStateType;
-        password: import("../types/loginTypes").InputStateType;
-    };
-    _handelValidate(event: InputValue, type: string, name: string): void;
-    handleOnInput(event: InputValue, type: string, name: string): void;
-    handleOnBlur(event: InputValue, type: string, name: string): void;
-    handleFormData(e: Event): void;
+    constructor(props: any);
+    init(): void;
+    activate(): void;
+    handlerCloseToast: () => void;
+    private handleValidate;
+    handleOnInput(event: InputValue, type: string, name: keyof InitialLoginType): void;
+    handleOnBlur(event: InputValue, type: string, name: keyof InitialLoginType): void;
+    handleFormData(e: Event): Promise<void>;
 }

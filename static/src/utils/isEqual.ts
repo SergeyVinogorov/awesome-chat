@@ -1,4 +1,4 @@
-type Argument = Array<any> | object |any
+type Argument = Array<any> | object | any
 export const isEqual = function (value: Argument, other: Argument): boolean {
 	// Get the value type
 	var type = Object.prototype.toString.call(value);
@@ -6,7 +6,7 @@ export const isEqual = function (value: Argument, other: Argument): boolean {
 	if (type !== Object.prototype.toString.call(other)) return false;
 
   if(type === '[object String]' && Object.prototype.toString.call(other) === '[object String]'){
-		return value === other
+    return value === other
 	}
 
 	if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;

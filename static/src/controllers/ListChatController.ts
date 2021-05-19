@@ -1,5 +1,5 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 import { ListChatPageView } from '../view/ListChatPageView';
 
 export interface UserPageOptions {
@@ -10,9 +10,12 @@ export interface UserPageOptions {
 export class ListChatPageController<
     P extends UserPageOptions
 > extends BaseComponent<P> {
-    public readonly view = ListChatPageView;
+    public view = ListChatPageView
+    public validatorService = new PageFormValidatorService();
 
-    public validatorService: PageFormValidatorService = new PageFormValidatorService();
+    constructor(props: any) {
+      super(props)
+    }
 
     handleSearch(value: string) {
         console.log(value);

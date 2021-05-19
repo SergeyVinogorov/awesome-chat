@@ -1,5 +1,5 @@
 import Didact from '../core/didactClass.js';
-import { Fieldset } from '../components/Fieldset/index.js';
+import { Fieldset } from './components/Fieldset/index.js';
 export var SettingProfilePageView = function (ctrl) {
     var attriubutes = {
         action: '#',

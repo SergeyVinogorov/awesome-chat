@@ -1,3 +1,8 @@
+export type loginType = {
+  login: string,
+  password: string
+}
+
 export type InputStateType = {
     value: string;
     isValid: boolean;

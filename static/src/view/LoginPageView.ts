@@ -3,7 +3,7 @@ import {
     UserPageOptions,
 } from '../controllers/LoginPageController';
 import Didact from '../core/didactClass';
-import { Fieldset } from '../components/Fieldset/index';
+import { Fieldset } from './components/Fieldset/index';
 
 export const LoginPageView = <P extends UserPageOptions>(
     ctrl: LoginPageController<P>
@@ -16,6 +16,14 @@ export const LoginPageView = <P extends UserPageOptions>(
         method: 'POST',
         onsubmit: (e: Event) => ctrl.handleFormData(e),
     };
+
+    const errorView = () => {
+      let isShow: boolean = ctrl.store?.appReducer.errorApp.show
+      let message: string = ctrl.store?.appReducer.errorApp.message
+      let type: string = ctrl.store?.appReducer.errorApp.type
+      return isShow ? ctrl.handelerError(message, ctrl.handlerCloseToast, type) : ''
+    }
+
     return Didact.createElement('div', {className:"mf-page mf-center-block"}, [
       Didact.createElement('form', attriubutes, [
           Didact.createElement('div', { className: 'mf-form__body' }, [
@@ -29,18 +37,18 @@ export const LoginPageView = <P extends UserPageOptions>(
                   typeStore: 'login',
                   className: 'mf-form__field',
                   control: ctrl,
-                  state: ctrl.getState.login,
+                  state: ctrl.state.login,
               }),
               new Fieldset({
                   id: 'loginPassword',
                   nameLabel: 'Пароль',
                   message: 'Не корректно написано',
                   type: 'password',
-                  name: 'pass',
+                  name: 'password',
                   typeStore: 'password',
                   className: 'mf-form__field',
                   control: ctrl,
-                  state: ctrl.getState.password,
+                  state: ctrl.state.password,
               }),
           ]),
           Didact.createElement('div', { className: 'mf-form__footer' }, [
@@ -57,11 +65,12 @@ export const LoginPageView = <P extends UserPageOptions>(
                   'a',
                   {
                       className: 'mf-page-link mf-page-link--top-indent',
-                      href: '../../registration.html',
+                      href: '/registration',
                   },
                   'Нет аккаунта?'
               ),
           ]),
-      ])
+      ]),
+    errorView()
     ])
 };

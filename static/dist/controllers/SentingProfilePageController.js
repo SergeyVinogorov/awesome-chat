@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { PageFormValidatorService } from '../services/PageFormValidatorService.js';
-import { BaseComponent } from '../components/BaseComponent.js';
+import { BaseComponent } from '../view/components/BaseComponent.js';
 import { SettingProfilePageView } from '../view/SettingProfilePageView.js';
 var SettingProfilePageController = /** @class */ (function (_super) {
     __extends(SettingProfilePageController, _super);

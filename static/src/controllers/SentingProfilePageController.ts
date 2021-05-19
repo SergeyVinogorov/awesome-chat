@@ -1,5 +1,5 @@
 import { PageFormValidatorService } from '../services/PageFormValidatorService';
-import { BaseComponent } from '../components/BaseComponent';
+import { BaseComponent } from '../view/components/BaseComponent';
 import { SettingProfilePageView } from '../view/SettingProfilePageView';
 
 type InputStateType = {
